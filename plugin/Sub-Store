@@ -1,5 +1,6 @@
 #!name = Sub-Store
-#!openUrl = 使用地址https://sub.store
+#!desc = 订阅管理使用下方地址栏打开
+#!openUrl = https://sub.store
 #!icon = https://raw.githubusercontent.com/sooyaaabo/Loon/main/Icon/App/Sub-Store.png
 
 [Script]
