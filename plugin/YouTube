@@ -1,6 +1,6 @@
 #!name = YouTube
 #!desc = 干掉广告
-#!icon = https://raw.githubusercontent.com/z-jinke/LOON/refs/heads/main/PNG/youtube.png
+#!icon = https://raw.githubusercontent.com/z-jinke/Loon/refs/heads/main/png/youtube.png
 
 [Rewrite]
 ^https:\/\/[\w-]+\.googlevideo\.com\/initplayback\?.*oad - reject-dict
