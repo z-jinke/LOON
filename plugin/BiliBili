@@ -1,0 +1,17 @@
+#!name = BiliBili
+#!desc = 修改布局去广告
+#!icon = https://raw.githubusercontent.com/z-jinke/Loon/refs/heads/main/png/bilibili.png
+
+[Rewrite]
+^https:\/\/(api|app)\.bilibili\.com\/x\/(resource\/ip|v2/splash/show|vip\/ads|v2\/dm\/qoe\/show) - reject-dict
+
+[Script]
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list script-path = https://github.com/z-jinke/Loon/raw/refs/heads/main/script/bilibili.js,requires-body=true,tag=响应修改
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index script-path = https://github.com/z-jinke/Loon/raw/refs/heads/main/script/bilibili.js,requires-body=true,tag=响应修改
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/search\/square\? script-path = https://github.com/z-jinke/Loon/raw/refs/heads/main/script/bilibili.js,requires-body=true,tag=响应修改
+http-response ^https:\/\/app\.bilibili\.com\/x\/resource\/show\/tab\/v2 script-path = https://github.com/z-jinke/Loon/raw/refs/heads/main/script/bilibili.js,requires-body=true,tag=响应修改
+http-response ^https:\/\/app\.bilibili\.com\/x\/v2\/account\/(mine|ipad) script-path = https://github.com/z-jinke/Loon/raw/refs/heads/main/script/bilibili.js,requires-body=true,tag=响应修改
+http-response ^https:\/\/(?:app\.bilibili\.com|grpc\.biliapi\.net)\/bilibili\.(?:app\.interface\.v1\.Teenagers\/ModeStatus|app\.show\.v1\.Popular\/Index|app\.playurl\.v1\.PlayURL\/PlayView|app\.playerunite\.v1\.Player\/PlayViewUnite|app\.view\.v1\.View\/(?:View|ViewProgress)|app\.viewunite\.v1\.View\/(?:RelatesFeed|View)|community\.service\.dm\.v1\.DM\/DmView|main\.community\.reply\.v1\.Reply\/MainList)$ script-path = https://raw.githubusercontent.com/kokoryh/Script/master/js/bilibili.protobuf.js,requires-body=true,binary-body-mode=true,tag=响应修改
+
+[MITM]
+hostname = app.bilibili.com,api.bilibili.com,grpc.biliapi.net
