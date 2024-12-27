@@ -1,6 +1,6 @@
 #!name = Spotify
 #!desc = 解锁会员
-#!icon = https://raw.githubusercontent.com/z-jinke/LOON/refs/heads/main/PNG/spotify.png
+#!icon = https://raw.githubusercontent.com/z-jinke/Loon/refs/heads/main/png/spotify.png
 
 [Rewrite]
 ^https:\/\/spclient\.wg\.spotify\.com\/user-customization-service\/v1\/customize$ header-del if-none-match
