@@ -1,0 +1,9 @@
+#!name = Safari
+#!desc = 重定向Google
+#!icon = https://raw.githubusercontent.com/z-jinke/Loon/refs/heads/main/png/safari.png
+
+[Rewrite]
+^https:\/\/www\.google\.cn 302 https://www.google.com
+
+[MITM]
+hostname = www.google.cn
