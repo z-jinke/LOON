@@ -1,4 +1,4 @@
-//2024.12.23
+//2024.12.29
 
 let url = $request.url;
 let body = $response.body;
@@ -36,7 +36,7 @@ if (/^https:\/\/api\.coolapk\.com\/v6\/main\/indexV8/.test(url)) {
 if (/^https:\/\/api\.coolapk\.com\/v6\/search\?/.test(url)) {
     let obj = JSON.parse(body);
     if (obj.data) {
-        obj.data = obj.data.filter(item => item.entityTemplate !== "searchHotListCard");
+        obj.data = obj.data.filter(item => item.entityTemplate !== "searchHotListCard" && item.entityTemplate !== "hotSearch");
     }
     body = JSON.stringify(obj);
     $done({ body });
