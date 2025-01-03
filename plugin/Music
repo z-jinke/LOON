@@ -16,6 +16,8 @@ FX= switch, false, true, tag= 发现, desc= 是否隐藏
 MY= switch, false, true, tag= 漫游, desc= 是否隐藏
 DT= switch, false, true, tag= 笔记, desc= 是否隐藏
 
+PRST= switch, false, true, tag= 最近常听, desc= 是否隐藏
+PRCN= switch, false, true, tag= 专属歌单, desc= 是否隐藏
 PRGG= switch, false, true, tag= 问候语提醒, desc= 是否隐藏
 HMPR= switch, false, true, tag= 音乐合伙人, desc= 是否隐藏
 PRRK= switch, false, true, tag= 音乐排行榜, desc= 是否隐藏
