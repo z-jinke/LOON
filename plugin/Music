@@ -7,10 +7,6 @@ FX = switch, false, true, tag = 底部-发现, desc = 是否隐藏底部发现�
 MY = switch, false, true, tag = 底部-漫游, desc = 是否隐藏底部漫游标签
 DT = switch, false, true, tag = 底部-笔记, desc = 是否隐藏底部笔记标签
 
-PRGG = switch, false, true, tag = 首页-问候语, desc = 是否隐藏首页问候语
-PRRK = switch, false, true, tag = 首页-排行榜, desc = 是否隐藏首页排行榜
-HMPR = switch, false, true, tag = 首页-音乐合伙人, desc = 是否隐藏首页音乐合伙人
-
 [Rule]
 DOMAIN,ipv4.music.163.com,REJECT
 DOMAIN,ipv6.music.163.com,REJECT
@@ -22,7 +18,7 @@ DOMAIN,ipv6.music.163.com,REJECT
 
 [Script]
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:batch|v2\/resource\/comment\/floor\/get) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改
-http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{PRGG},{PRRK},{HMPR}]
+http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/page\/discovery\/resource\/show script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/home\/framework\/tab script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{MY},{DT},{FX}]
 
 [MitM]
