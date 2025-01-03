@@ -14,24 +14,29 @@ PRSCVPT = switch, false, true, tag = 首页-推荐歌单, desc = 是否隐藏首
 PRST = switch, false, true, tag = 首页-最近常听, desc = 是否隐藏首页最近常听
 PRRR = switch, false, true, tag = 首页-雷达歌单, desc = 是否隐藏首页雷达歌单
 HMPR = switch, false, true, tag = 首页-音乐合伙人, desc = 是否隐藏首页音乐合伙人
-PRMST = switch, false, true, tag =首页-推荐专属歌单, desc = 是否隐藏首页专属歌单
-PRCN = switch, false, true, tag = 首页-你的专属歌单, desc = 是否隐藏首页你的专属歌单
+
+[Rule]
+DOMAIN, httpdns.n.netease.com, REJECT
+DOMAIN, iadmat.nosdn.127.net, REJECT
+DOMAIN, iadmatapk.nosdn.127.net, REJECT
+DOMAIN, iadmusicmat.music.126.net, REJECT
+DOMAIN, iadmusicmatvideo.music.126.net, REJECT
+DOMAIN, ipv4.music.163.com, REJECT
+DOMAIN, ipv6.music.163.com, REJECT
 
 [Rewrite]
+#新版加密
 ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/e?api\/(?:batch|v\d\/resource\/comment\/floor\/get|homepage\/block\/page|link\/page\/rcmd\/(block\/resource\/multi\/refresh|resource\/show)|user\/follow\/users\/mixed\/get|link\/home\/framework\/tab|link\/position\/show\/resource|link\/page\/discovery\/resource\/show) header-del x-aeapi
-
-^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/(?:eapi|weapi)\/(?:ad\/|ocpc\/ad\/|delivery\/(?:batch-)?deliver|moment\/tab\/info\/|side-bar\/mini-program\/music-service\/account|yunbei\/account\/entrance\/|community\/friends\/fans-group\/artist\/group\/|mine\/applet\/redpoint|music\/songshare\/text\/recommend\/|resniche\/position\/play\/new\/|resource\/comments?\/musiciansaid\/|user\/sub\/artist|ios\/version|mlivestream\/entrance\/playpage\/|link\/position\/show\/strategy|link\/scene\/show\/resource|v1\/content\/exposure\/comment\/banner\/|activity\/bonus\/playpage\/time\/query|resource-exposure\/|search\/(?:chart\/|default\/|rcmd\/keyword\/|specialkeyword\/)|my\/podcast\/tab\/recommend) reject-dict
+#开屏广告
+^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/e?api\/(ocpc\/)?ad\/ reject-dict
+#合并规则
+^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/(?:eapi|weapi)\/(?:delivery\/(?:batch-)?deliver|moment\/tab\/info\/|side-bar\/mini-program\/music-service\/account|yunbei\/account\/entrance\/|community\/friends\/fans-group\/artist\/group\/|mine\/applet\/redpoint|music\/songshare\/text\/recommend\/|resniche\/position\/play\/new\/|resource\/comments?\/musiciansaid\/|user\/sub\/artist|ios\/version|mlivestream\/entrance\/playpage\/|link\/position\/show\/strategy|link\/scene\/show\/resource|v1\/content\/exposure\/comment\/banner\/|activity\/bonus\/playpage\/time\/query|resource-exposure\/|search\/(?:chart\/|default\/|rcmd\/keyword\/|specialkeyword\/)|my\/podcast\/tab\/recommend) reject-dict
 
 [Script]
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:batch|v2\/resource\/comment\/floor\/get) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改
-
-http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{PRGG},{PRRK},{PRDRD},{PRSCVPT},{PRST},{PRRR},{HMPR},{PRMST},{PRCN}]
-
+http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{PRGG},{PRRK},{PRDRD},{PRSCVPT},{PRST},{PRRR},{HMPR}]
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/home\/framework\/tab script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{MY},{DT},{FX}]
-
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/page\/discovery\/resource\/show script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改
-
-http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/position\/show\/resource script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改
 
 [MitM]
 hostname = interface*.music.163.com,ipv4.music.163.com
