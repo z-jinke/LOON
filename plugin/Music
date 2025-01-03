@@ -18,10 +18,11 @@ DT= switch, false, true, tag= 笔记, desc= 是否隐藏
 
 PRGG= switch, false, true, tag= 问候语提醒, desc= 是否隐藏
 HMPR= switch, false, true, tag= 音乐合伙人, desc= 是否隐藏
+PRRK= switch, false, true, tag= 音乐排行榜, desc= 是否隐藏
 
 [Script]
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:batch|v2\/resource\/comment\/floor\/get) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body= true, binary-body-mode= true, tag= 响应修改
-http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body= true, binary-body-mode= true, tag= 响应修改, argument= [{PRGG},{HMPR}]
+http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body= true, binary-body-mode= true, tag= 响应修改, argument= [{PRGG},{PRRK},{PRDRD},{PRSCVPT},{PRST},{PRRR},{HMPR},{PRMST},{PRCN}]
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/home\/framework\/tab script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body= true, binary-body-mode= true, tag= 响应修改, argument= [{MY},{DT},{FX}]
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/page\/discovery\/resource\/show script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body= true, binary-body-mode= true, tag= 响应修改
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/position\/show\/resource script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body= true, binary-body-mode= true, tag=响应修改
