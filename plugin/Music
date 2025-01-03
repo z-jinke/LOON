@@ -8,8 +8,6 @@ MY= switch, false, true, tag= 漫游, desc=
 DT= switch, false, true, tag= 笔记, desc=
 
 PRGG= switch, false, true, tag= 问候语标语, desc=
-PRRK= switch, false, true, tag= 音乐排行榜, desc=
-HMPR= switch, false, true, tag= 音乐合伙人, desc=
 
 [Rewrite]
 ^https?:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/e?api\/(?:link\/home\/framework\/tab|homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)|batch|v\d\/resource\/comment\/floor\/get|link\/page\/discovery\/resource\/show) header-del x-aeapi
@@ -23,7 +21,7 @@ HMPR= switch, false, true, tag= 音乐合伙人, desc=
 http-response ^https:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/(batch|v\d\/resource\/comment\/floor\/get) script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改
 http-response ^https:\/\/(ipv4|interface\d?)\.music\.163\.com\/e?api\/link\/page\/discovery\/resource\/show script-path=https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改
 http-response ^https:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/link\/home\/framework\/tab script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{MY},{DT},{FX}]
-http-response ^https?:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{PRGG},{PRRK},{HMPR}]
+http-response ^https?:\/\/(?:ipv4|interface\d?)\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)) script-path = https://raw.githubusercontent.com/Keywos/rule/main/script/wy/js/wyres.js, requires-body=true, binary-body-mode=true, tag=响应修改, argument=[{PRGG}]
 
 [MitM]
 hostname = interface*.music.163.com,ipv4.music.163.com
